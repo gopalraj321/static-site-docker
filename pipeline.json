@@ -1,0 +1,63 @@
+{
+  "pipeline": {
+    "name": "static-site-pipeline",
+    "roleArn": "arn:aws:iam::796973491290:role/CodePipelineServiceRole",
+    "artifactStore": {
+      "type": "S3",
+      "location": "codepipeline-ap-southeast-1-796973491290"
+    },
+    "stages": [
+      {
+        "name": "Source",
+        "actions": [
+          {
+            "name": "SourceAction",
+            "actionTypeId": {
+              "category": "Source",
+              "owner": "ThirdParty",
+              "provider": "GitHub",
+              "version": "1"
+            },
+            "outputArtifacts": [
+              {
+                "name": "SourceOutput"
+              }
+            ],
+            "configuration": {
+              "Owner": "gopalraj321",
+              "Repo": "static-site-docker",
+              "Branch": "main",
+              "OAuthToken": "****"
+            },
+            "runOrder": 1
+          }
+        ]
+      },
+      {
+        "name": "Build",
+        "actions": [
+          {
+            "name": "BuildAction",
+            "actionTypeId": {
+              "category": "Build",
+              "owner": "AWS",
+              "provider": "CodeBuild",
+              "version": "1"
+            },
+            "inputArtifacts": [
+              {
+                "name": "SourceOutput"
+              }
+            ],
+            "outputArtifacts": [],
+            "configuration": {
+              "ProjectName": "static-site-build"
+            },
+            "runOrder": 1
+          }
+        ]
+      }
+    ]
+  }
+}
+
