@@ -1,0 +1,24 @@
+{
+  "family": "static-site-task",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::796973491290:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "static-site",
+      "image": "796973491290.dkr.ecr.ap-southeast-1.amazonaws.com/gopal-static-site:latest",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512"
+}
+
