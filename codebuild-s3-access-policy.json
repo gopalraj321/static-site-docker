@@ -4,11 +4,15 @@
     {
       "Effect": "Allow",
       "Action": [
+        "s3:PutObject",
         "s3:GetObject",
-        "s3:GetObjectVersion"
+        "s3:GetObjectVersion",
+        "s3:GetBucketAcl",
+        "s3:GetBucketLocation"
       ],
-      "Resource": "arn:aws:s3:::codepipeline-ap-southeast-1-796973491290/*"
+      "Resource": [
+        "arn:aws:s3:::codepipeline-ap-southeast-1-796973491290/*"
+      ]
     }
   ]
 }
-

@@ -1,0 +1,7 @@
+[
+  {
+    "name": "my-container",  # The container name defined in ECS task definition
+    "imageUri": "YOUR_ECR_REPO_URL:latest"  # Your ECR URL where the Docker image is stored
+  }
+]
+

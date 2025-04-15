@@ -49,9 +49,38 @@
                 "name": "SourceOutput"
               }
             ],
-            "outputArtifacts": [],
+            "outputArtifacts": [
+              {
+                "name": "BuildOutput"
+              }
+            ],
             "configuration": {
               "ProjectName": "static-site-build"
+            },
+            "runOrder": 1
+          }
+        ]
+      },
+      {
+        "name": "Deploy",
+        "actions": [
+          {
+            "name": "ECSDeploy",
+            "actionTypeId": {
+              "category": "Deploy",
+              "owner": "AWS",
+              "provider": "ECS",
+              "version": "1"
+            },
+            "inputArtifacts": [
+              {
+                "name": "BuildOutput"
+              }
+            ],
+            "configuration": {
+              "ClusterName": "static-site-cluster",
+              "ServiceName": "static-site-service",
+              "FileName": "imagedefinitions.json"
             },
             "runOrder": 1
           }
